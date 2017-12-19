@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using StateMachine.ActiveStateMachine.Enums;
 using StateMachine.ActiveStateMachine.Subjects;
-using StateMachine.Common;
 using StateMachine.Common.Args;
 using StateMachine.Common.Enums;
 
@@ -46,7 +45,7 @@ namespace StateMachine.ActiveStateMachine
             int queueCapacity)
         {
             this.States = states;
-            this._initialState = new State("InitialState", null, null, null);
+            this._initialState = new State(StateType.InitialState, null, null, null);
             this.TriggerQueue = new BlockingCollection<string>(queueCapacity);
 
             this.InitStateMachine();

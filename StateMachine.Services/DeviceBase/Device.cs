@@ -9,7 +9,7 @@ namespace StateMachine.Services.DeviceBase
     {
         #region Fields
 
-        Action<string, string, string> _devEvMethod;
+        private Action<string, string, string> _devEvMethod;
         
         #endregion
 

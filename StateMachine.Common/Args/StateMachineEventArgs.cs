@@ -7,12 +7,12 @@ namespace StateMachine.Common.Args
     {
         #region Properties
 
-        public string EventName                     { get; set; }
-        public string EventInfo                     { get; set; }
-        public DateTime TimeStamp                   { get; set; }
-        public string Source                        { get; set; }
-        public string Target                        { get; set; }
-        public StateMachineEventType EventType      { get; set; }
+        public string EventName                     { get; private set; }
+        public string EventInfo                     { get; private set; }
+        public DateTime TimeStamp                   { get; private set; }
+        public string Source                        { get; private set; }
+        public string Target                        { get; private set; }
+        public StateMachineEventType EventType      { get; private set; }
 
         #endregion
 

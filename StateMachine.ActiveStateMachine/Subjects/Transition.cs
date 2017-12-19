@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StateMachine.Common.Enums;
+using System.Collections.Generic;
 
 namespace StateMachine.ActiveStateMachine.Subjects
 {
@@ -7,7 +8,7 @@ namespace StateMachine.ActiveStateMachine.Subjects
         #region Properties
 
         public string Name                                  { get; private set; }
-        public string SourceState                           { get; private set; }
+        public StateType SourceState                        { get; private set; }
         public string TargetState                           { get; private set; }
         public List<StateMachineAction> Guards              { get; private set; }
         public List<StateMachineAction> Transitions         { get; private set; }
@@ -19,7 +20,7 @@ namespace StateMachine.ActiveStateMachine.Subjects
 
         public Transition(
             string name,
-            string sourceState,
+            StateType sourceState,
             string targetState,
             List<StateMachineAction> guards,
             List<StateMachineAction> transitions,

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StateMachine.Common.Enums;
+using System.Collections.Generic;
 
 namespace StateMachine.ActiveStateMachine.Subjects
 {
@@ -6,7 +7,8 @@ namespace StateMachine.ActiveStateMachine.Subjects
     {
         #region Properties
 
-        public string StateName                                     { get; private set; }
+        //public string StateName                                     { get; private set; }
+        public StateType StateName { get; private set; }
         public Dictionary<string, Transition> StateTansitions       { get; private set; }
         public List<StateMachineAction> AccessActions               { get; private set; }
         public List<StateMachineAction> ExitActions                 { get; private set; }
@@ -17,7 +19,7 @@ namespace StateMachine.ActiveStateMachine.Subjects
         #region C-Tor
 
         public State(
-            string stateName,
+            StateType stateName,
             Dictionary<string, Transition> stateTransitions,
             List<StateMachineAction> accessActions,
             List<StateMachineAction> exitActions,

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using StateMachine.Common.Args;
 using StateMachine.Common.Contracts;
 using StateMachine.Common.Enums;
@@ -67,11 +64,8 @@ namespace StateMachine.Services.Manager
         /// <param name="eventType"></param>
         public void RaiseViewManagerEvent(string name, string info, StateMachineEventType eventType = StateMachineEventType.System)
         {
-            var newVMargs = new StateMachineEventArgs(name, "View manager event: " + info, "View Manager", eventType);  
-            if (ViewManagerEvent != null)
-            {
-                ViewManagerEvent(this, newVMargs);
-            }
+            var newVMargs = new StateMachineEventArgs(name, "View manager event: " + info, "View Manager", eventType);
+            this.ViewManagerEvent?.Invoke(this, newVMargs);
         }
 
         /// <summary>
@@ -85,10 +79,7 @@ namespace StateMachine.Services.Manager
         public void RaiseUICommand(string command, string info, string source, string target)
         {
             var newUIargs = new StateMachineEventArgs(command, info, source, StateMachineEventType.Command, target);
-            if (ViewManagerEvent != null)
-            {
-                ViewManagerEvent(this, newUIargs);
-            }
+            this.ViewManagerEvent?.Invoke(this, newUIargs);
         }
 
         #endregion

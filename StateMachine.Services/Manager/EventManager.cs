@@ -81,10 +81,7 @@ namespace StateMachine.Services.Manager
         private void RaiseEventManagerEvent(string eventName, string eventInfo, StateMachineEventType eventType)
         {
             var newArgs = new StateMachineEventArgs(eventName, eventInfo, "Event Manager", eventType);
-            if (EventManagerEvent != null)
-            {
-                EventManagerEvent(this, newArgs);
-            }
+            EventManagerEvent?.Invoke(this, newArgs);
         }
 
         #endregion

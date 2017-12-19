@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using StateMachine.Common.Args;
 using StateMachine.Common.Contracts;
 using StateMachine.Common.Enums;
@@ -136,11 +135,7 @@ namespace StateMachine.Services.Manager
         private void RaiseDeviceManagerEvent(string name, string info)
         {
             var newDmArgs = new StateMachineEventArgs(name, "Device manager event: " + info, "Device Manager", StateMachineEventType.System);
-
-            if (this.DeviceManagerEvent != null)
-            {
-                this.DeviceManagerEvent(this, newDmArgs);
-            }
+            this.DeviceManagerEvent?.Invoke(this, newDmArgs);
         }
 
         /// <summary>
@@ -152,11 +147,7 @@ namespace StateMachine.Services.Manager
         public void RaiseDeviceManagerNotification(string command, string info, string source)
         {
             var newDmArgs = new StateMachineEventArgs(command, info, source, StateMachineEventType.Notification, "State Machine");
-
-            if (this.DeviceManagerNotification != null)
-            {
-                this.DeviceManagerNotification(this, newDmArgs);
-            } 
+            this.DeviceManagerNotification?.Invoke(this, newDmArgs);
         }
 
         #endregion
